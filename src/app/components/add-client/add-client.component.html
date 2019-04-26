@@ -9,11 +9,19 @@
 </div>
 
 <div class="card">
-  <div class="card-header">
+  <h3 class="card-header">
     Add Client
-  </div>
+  </h3>
   <div class="card-body">
     <div [hidden]="submitted">
+
+
+<!-- what will differ is the 
+ngSubmit will have a dif handler updateClient
+avail via attribute
+submit btn will say update via class prop -->
+
+
       <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)">
         <!-- first name  -->
         <div class="form-group">
@@ -137,14 +145,12 @@
         />
       </form>
       <!-- end form -->
-    </div>
 
-    <!-- <div [hidden]="!submitted && form.valid">
-      <h3>Client Added</h3>
-      <p>{{ client.firstName }}</p>
-      <p>{{ client.lastName }}</p>
-      <p>{{ client.email }}</p>
-      <p>{{ client.phone }}</p>
-    </div> -->
+
+
+
+
+
+    </div>
   </div>
 </div>

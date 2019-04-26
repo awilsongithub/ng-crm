@@ -1,3 +1,143 @@
-<p>
-  edit-client works!
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/client/{{client.id}}" class="btn btn-link">
+      <i class="fa fa-arrow-circle-o-left"></i>
+      Cancel edits
+    </a>
+  </div>
+  <div class="col-md-6"></div>
+</div>
+
+<div class="card">
+  <h3 class="card-header">
+    Edit Client
+  </h3>
+  <div class="card-body">
+    <div [hidden]="submitted">
+
+      <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)">
+        <!-- first name  -->
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="firstName"
+            #clientFirstName="ngModel"
+            [ngClass]="{
+              'is-invalid': clientFirstName.errors && clientFirstName.touched
+            }"
+            [(ngModel)]="client.firstName"
+            minlength="2"
+            required
+          />
+          <div
+            [hidden]="!clientFirstName.errors?.required"
+            class="invalid-feedback"
+          >
+            Must be at least 2 characters
+          </div>
+        </div>
+
+        <!-- last name  -->
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lastName"
+            #clientLastName="ngModel"
+            [ngClass]="{
+              'is-invalid': clientLastName.errors && clientLastName.touched
+            }"
+            [(ngModel)]="client.lastName"
+            minlength="2"
+            required
+          />
+          <div
+            [hidden]="!clientLastName.errors?.required"
+            class="invalid-feedback"
+          >
+            Must be at least 2 characters
+          </div>
+        </div>
+
+        <!-- email  -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            name="email"
+            [(ngModel)]="client.email"
+            #clientEmail="ngModel"
+            [ngClass]="{
+              'is-invalid': clientEmail.errors && clientEmail.touched
+            }"
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+            required
+          />
+          <div [hidden]="!clientEmail.errors?.pattern" class="invalid-feedback">
+            Email is not valid
+          </div>
+          <div
+            [hidden]="!clientEmail.errors?.required"
+            class="invalid-feedback"
+          >
+            Email is required
+          </div>
+        </div>
+
+        <!-- phone  -->
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phone"
+            [(ngModel)]="client.phone"
+            #clientPhone="ngModel"
+            [ngClass]="{
+              'is-invalid': clientPhone.errors && clientPhone.touched
+            }"
+            minlength="10"
+            required
+          />
+          <div
+            [hidden]="!clientPhone.errors?.minlength"
+            class="invalid-feedback"
+          >
+            Number not valid. Please include area code.
+          </div>
+          <div
+            [hidden]="!clientPhone.errors?.required"
+            class="invalid-feedback"
+          >
+            Phone number is required
+          </div>
+        </div>
+
+        <!-- balance  -->
+        <div class="form-group">
+          <label for="balance">Balance</label>
+          <input
+            type="number"
+            class="form-control"
+            name="balance"
+            [(ngModel)]="client.balance"
+            #clientBalance="ngModel"
+            [disabled]="disableBalanceOnAdd"
+          />
+        </div>
+
+        <input
+          type="submit"
+          [disabled]="form.invalid"
+          value="Update"
+          class="btn btn-primary btn-block"
+        />
+      </form>
+      <!-- end form -->
+    </div>
+  </div>
+</div>
