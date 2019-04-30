@@ -21,7 +21,6 @@ export class ClientService {
     this.clientsCollection = this.afs.collection("clients", (ref) =>
       ref.orderBy("lastName", "asc")
     );
-    console.log(this.clientsCollection);
   }
 
   getClients(): Observable<Client[]> {
@@ -48,6 +47,7 @@ export class ClientService {
     this.clientDoc = this.afs.doc<Client>(`clients/${id}`);
     this.client = this.clientDoc.snapshotChanges().pipe(
       map((action) => {
+          // action is a DocumentSnapshot w/ props: payload.exists: boolean, payload.id, proto.fields (client props/fields)
         if (action.payload.exists === false) {
           console.log("action w NO payload", action);
           return null;
@@ -67,9 +67,13 @@ export class ClientService {
   }
 
   updateClient(client: Client) {
-    // get doc by id from afs
-    // call set? method
     this.clientDoc = this.afs.doc<Client>(`clients/${client.id}`);
     this.clientDoc.update(client);
+  }
+
+  deleteClient(client: Client) {
+    console.log(client)
+    this.clientDoc = this.afs.doc<Client>(`clients/${client.id}`);
+    this.clientDoc.delete();
   }
 } // end class

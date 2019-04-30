@@ -16,7 +16,6 @@ export class ClientsComponent implements OnInit {
 
   ngOnInit() {
     this.clientService.getClients().subscribe(clients => {
-      console.log(clients);
       this.clients = clients;
       this.getTotalOwed();
     });
@@ -24,9 +23,7 @@ export class ClientsComponent implements OnInit {
   }
 
   getTotalOwed() {
-    console.log(this.clients);
     this.totalOwed = this.clients.reduce( (total:number, client:Client) => {   
-        console.log(client.email, client.firstName, typeof client.balance)
         return total + client.balance;
     }, 0);
   }

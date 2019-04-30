@@ -13,6 +13,7 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 // our modules & services
 import { AppRoutingModule } from "./app-routing.module";
 import { ClientService } from "./services/client.service";
+import { AuthService } from "./services/auth.service";
 
 // our components
 import { AppComponent } from "./app.component";
@@ -52,7 +53,7 @@ import { NotFoundComponent } from "./components/not-found/not-found.component";
     FormsModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [ClientService],
+  providers: [ClientService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
