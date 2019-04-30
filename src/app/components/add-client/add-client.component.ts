@@ -19,8 +19,8 @@ export class AddClientComponent implements OnInit {
     balance: 0
   };
 
-  disableBalanceOnAdd: boolean = false;
   @ViewChild("clientForm") form: any;
+  disableBalanceOnAdd: boolean = false;
   submitted: boolean = false;
 
   constructor(
@@ -48,7 +48,7 @@ export class AddClientComponent implements OnInit {
         timeout: 4000
       });
       this.clientService.newClient(value);
-      this.router.navigate(['/']);
+      this.router.navigate(["/"]);
     }
   }
 } // end of component
