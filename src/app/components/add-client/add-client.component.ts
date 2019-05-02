@@ -4,6 +4,7 @@ import { Client } from "../../models/Client";
 import { firestore } from "firebase";
 import { FlashMessagesService } from "angular2-flash-messages";
 import { ClientService } from "../../services/client.service";
+import { SettingsService } from "../../services/settings.service";
 
 @Component({
   selector: "app-add-client",
@@ -20,16 +21,19 @@ export class AddClientComponent implements OnInit {
   };
 
   @ViewChild("clientForm") form: any;
-  disableBalanceOnAdd: boolean = false;
+  disableBalanceOnAdd: boolean;
   submitted: boolean = false;
 
   constructor(
     private flashMessage: FlashMessagesService,
     private clientService: ClientService,
+    private settingsService: SettingsService,
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.disableBalanceOnAdd = this.settingsService.getSettings().disableBalanceOnAdd;
+  }
 
   onSubmit({ value, valid }: { value: Client; valid: boolean }) {
     this.submitted = true;

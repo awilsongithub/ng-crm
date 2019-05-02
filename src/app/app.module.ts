@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { AppRoutingModule } from "./app-routing.module";
 import { ClientService } from "./services/client.service";
 import { AuthService } from "./services/auth.service";
+import { SettingsService } from "./services/settings.service";
 
 // our components
 import { AppComponent } from "./app.component";
@@ -53,7 +54,7 @@ import { NotFoundComponent } from "./components/not-found/not-found.component";
     FormsModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [ClientService, AuthService],
+  providers: [ClientService, AuthService, SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

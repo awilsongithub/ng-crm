@@ -7,43 +7,44 @@ import {
 } from "angularfire2/firestore";
 import { Observable } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
-import { Client } from '../models/Client';
+import { Client } from "../models/Client";
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthService {
-    client: Client;
-    clientDoc: AngularFirestoreDocument<Client>;
+  client: Client;
+  clientDoc: AngularFirestoreDocument<Client>;
 
-  constructor(
-    private afAuth: AngularFireAuth, 
-    private afs: AngularFirestore
-) {}
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {}
 
   login(email: string, password: string) {
     return new Promise((resolve, reject) => {
-      this.afAuth.auth
-        .signInWithEmailAndPassword(email, password)
-        .then((userData) => resolve(userData => {
+      this.afAuth.auth.signInWithEmailAndPassword(email, password).then(
+        (userData) =>
+          resolve((userData) => {
             this.client = userData.user;
-        }), (err) => reject(err));
+          }),
+        (err) => reject(err)
+      );
+    });
+  }
+
+  register(email: string, password: string) {
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((res) => resolve(res), (err) => reject(err));
     });
   }
 
   getAuth() {
-    // return this.afAuth.authState().pipe(map((auth) => auth));
-    // return this.afAuth.authState.map(auth => auth);
-    
-    // get the document for client
-    this.clientDoc = this.afs.doc<Client>(`clients/`)
-    // per docs 2019
-    this.client = this.afAuth.authState.pipe(
-        switchMap(client => {
-            if(client) {
-                return this.afs.doc<Client>
-            }
-        })
-    )
+    // operator chaining transitioned to use of .pipe() in RXJS 6
+    // see https://stackoverflow.com/questions/50203241/angular-5-to-6-upgrade-property-map-does-not-exist-on-type-observable
+    return this.afAuth.authState.pipe(map((auth) => auth));
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
   }
 }

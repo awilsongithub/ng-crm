@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 export class LoginComponent implements OnInit {
   email: string;
   password: string;
+  loginFailureAnimation: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -18,8 +19,15 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
+  // TODO shouldn't we also do this here:
+  // set authenticated state so we
+  // show logout not login
+  // dont show register
+  // allow authorized ui to show
+  // ...
   ngOnInit() {
     this.authService.getAuth().subscribe((auth) => {
+      console.log(auth);
       if (auth) {
         this.router.navigate(["/"]);
       }
@@ -45,6 +53,10 @@ export class LoginComponent implements OnInit {
           cssClass: "alert-danger",
           timeout: 4000
         });
+        this.loginFailureAnimation = true;
+        setTimeout(() => {
+          this.loginFailureAnimation = false;
+        }, 500);
       });
   }
 }
