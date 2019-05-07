@@ -46,7 +46,6 @@ export class EditClientComponent implements OnInit {
         timeout: 4000
       });
     } else {
-      // Add id to value and update
       value.id = this.client.id;
       this.clientService.updateClient(value);
       this.flashMessage.show("Client updated", {

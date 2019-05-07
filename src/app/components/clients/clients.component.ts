@@ -11,6 +11,7 @@ import { Subscriber } from "rxjs";
 export class ClientsComponent implements OnInit {
   clients: Client[];
   totalOwed: number;
+  minBalance: number = 0;
 
   constructor(private clientService: ClientService) {}
 
@@ -19,7 +20,6 @@ export class ClientsComponent implements OnInit {
       this.clients = clients;
       this.getTotalOwed();
     });
-    
   }
 
   getTotalOwed() {

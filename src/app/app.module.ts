@@ -29,6 +29,7 @@ import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { SettingsComponent } from "./components/settings/settings.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
+import { ClientHasBalancePipe } from "./components/clients/clients.pipe";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { NotFoundComponent } from "./components/not-found/not-found.component";
     LoginComponent,
     RegisterComponent,
     SettingsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ClientHasBalancePipe
   ],
   imports: [
     BrowserModule,
