@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 import { AuthService } from "../../services/auth.service";
 import { SettingsService } from "../../services/settings.service";
 import { Client } from "../../models/Client";
@@ -14,13 +14,14 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: boolean;
   loggedInUser: string;
   showRegister: boolean;
+  // to raise an event
+  @Output() change = new EventEmitter();
 
   constructor(
     private flashMessage: FlashMessagesService,
     private router: Router,
     private authService: AuthService,
     private settingsService: SettingsService
-
   ) {}
 
   ngOnInit() {
@@ -44,5 +45,8 @@ export class NavbarComponent implements OnInit {
       timeout: 4000
     });
     this.router.navigate(["/register"]);
+    // raise an event
+    // what change will be emitted??
+    this.change.emit();
   }
 }

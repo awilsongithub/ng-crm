@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AuthService } from "../../services/auth.service";
 import { FlashMessagesService } from "angular2-flash-messages";
 import { Router } from "@angular/router";
+ import { SettingsService } from "../../services/settings.service";
 
 @Component({
   selector: "app-login",
@@ -12,11 +13,13 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
   loginFailureAnimation: boolean = false;
+  showRegister: boolean;
 
   constructor(
     private authService: AuthService,
     private flashMessage: FlashMessagesService,
-    private router: Router
+    private router: Router,
+    private settingsService: SettingsService
   ) {}
 
   // TODO shouldn't we also do this here:
@@ -30,8 +33,12 @@ export class LoginComponent implements OnInit {
       console.log(auth);
       if (auth) {
         this.router.navigate(["/"]);
+      } else {
+           this.showRegister = this.settingsService.getSettings().allowRegistration;
+
       }
     });
+
   }
 
   // use our nmModel bound values
