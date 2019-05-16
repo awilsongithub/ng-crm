@@ -17,7 +17,11 @@
 
 <!-- client info -->
 <div *ngIf="client" class="card">
-  <h3 class="card-header">{{ client.firstName }} {{ client.lastName }}</h3>
+  <h3 class="card-header">
+      {{ client.firstName }} {{ client.lastName }}
+      <app-like [likesCount]="likesCount"></app-like>
+    
+    </h3>
   <div class="card-body">
     <div class="row">
       <div class="col-md-8 col-sm-6">

@@ -24,6 +24,13 @@ footer {
   padding: 0;
 }
 
+.fa-heart {
+  color: lightgray;
+}
+.fa-heart.isLiked {
+  color: pink;
+}
+
 .shake {
   -webkit-animation: shake 0.4s 1 linear;
   -moz-animation: shake 0.4s 1 linear;

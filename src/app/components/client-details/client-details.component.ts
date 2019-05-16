@@ -14,6 +14,7 @@ export class ClientDetailsComponent implements OnInit {
   id: string;
   hasBalance: boolean = false;
   showBalanceUpdateInput: boolean = false;
+  likesCount: number = 44;
 
   constructor(
     private flashMessage: FlashMessagesService,
