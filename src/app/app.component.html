@@ -1,5 +1,11 @@
-<app-navbar></app-navbar>
-<div class="container">
-  <flash-messages></flash-messages>
-  <router-outlet></router-outlet>
+<div class="main-container">
+  <app-navbar (change)="onNavbarChange($event)"></app-navbar>
+  <div class="container">
+    <flash-messages></flash-messages>
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer>
+    <a href="" class="link">Privacy Policy</a>
+    <span class="copyright">copyright 2018 BBC, LLC</span>
+  </app-footer>
 </div>

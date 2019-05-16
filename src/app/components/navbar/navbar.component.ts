@@ -14,7 +14,6 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: boolean;
   loggedInUser: string;
   showRegister: boolean;
-  // to raise an event
   @Output() change = new EventEmitter();
 
   constructor(
@@ -39,14 +38,12 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogoutClick() {
+    this.change.emit(this);
     this.authService.logout();
     this.flashMessage.show("You are now logged out", {
       cssClass: "alert-succes",
       timeout: 4000
     });
     this.router.navigate(["/register"]);
-    // raise an event
-    // what change will be emitted??
-    this.change.emit();
   }
 }

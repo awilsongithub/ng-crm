@@ -30,6 +30,7 @@ import { RegisterComponent } from "./components/register/register.component";
 import { SettingsComponent } from "./components/settings/settings.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { ClientHasBalancePipe } from "./components/clients/clients.pipe";
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ClientHasBalancePipe } from "./components/clients/clients.pipe";
     RegisterComponent,
     SettingsComponent,
     NotFoundComponent,
-    ClientHasBalancePipe
+    ClientHasBalancePipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

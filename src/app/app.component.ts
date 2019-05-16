@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'clientpanel';
+
+  onNavbarChange(isLoggedIn) {
+      console.log('navbar change event', isLoggedIn)
+  }
 }
