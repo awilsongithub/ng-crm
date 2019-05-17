@@ -37,20 +37,29 @@ export class AddClientComponent implements OnInit {
 
   onSubmit({ value, valid }: { value: Client; valid: boolean }) {
     this.submitted = true;
-    console.log(this.form);
+
+    // add props
+    value.likes = [];
     if (this.disableBalanceOnAdd) {
       value.balance = 0;
     }
+
+    // if invalid
     if (!valid) {
       this.flashMessage.show("Please fill out the form correctly", {
         cssClass: "alert-danger",
         timeout: 4000
       });
-    } else {
+    }
+
+    // create new client
+    else {
       this.flashMessage.show("Client added", {
         cssClass: "alert-success",
         timeout: 4000
       });
+      console.log(value);
+
       this.clientService.newClient(value);
       this.router.navigate(["/"]);
     }

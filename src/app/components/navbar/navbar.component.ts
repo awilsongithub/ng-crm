@@ -26,6 +26,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.authService.getAuth().subscribe((auth) => {
       if (auth) {
+          console.log(auth)
         this.isLoggedIn = true;
         this.showRegister = false;
         this.loggedInUser = auth.email;

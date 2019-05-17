@@ -24,6 +24,7 @@ export class AuthService {
         (userData) =>
           resolve((userData) => {
             this.client = userData.user;
+            console.log(userData.user)
           }),
         (err) => reject(err)
       );
@@ -43,6 +44,13 @@ export class AuthService {
     // see https://stackoverflow.com/questions/50203241/angular-5-to-6-upgrade-property-map-does-not-exist-on-type-observable
     return this.afAuth.authState.pipe(map((auth) => auth));
   }
+
+  // TODO this is the same as getAuth
+  // refactor into single method?
+  getCurrentUser() {
+    return this.afAuth.authState.pipe(map((auth) => auth));
+  }
+  
 
   logout() {
     this.afAuth.auth.signOut();

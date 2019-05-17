@@ -19,7 +19,7 @@
 <div *ngIf="client" class="card">
   <h3 class="card-header">
       {{ client.firstName }} {{ client.lastName }}
-      <app-like [likesCount]="likesCount"></app-like>
+      <app-like [client]="client"></app-like>
     
     </h3>
   <div class="card-body">

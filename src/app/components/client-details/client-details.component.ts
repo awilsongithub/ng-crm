@@ -32,7 +32,7 @@ export class ClientDetailsComponent implements OnInit {
         }
       }
       this.client = client;
-      console.log(this.client);
+      console.log('client details are', this.client)
     });
   }
 

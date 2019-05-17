@@ -1,10 +1,10 @@
 <span>
-    <i 
-    class="fa fa-heart" 
-    aria-hidden="true" 
+  <i
+    class="fa fa-heart"
+    aria-hidden="true"
     (click)="onClick()"
-    [ngClass]="{'isLiked': isLiked}"
-
-    ></i>
-    <span> {{likesCount}}</span>
+    [ngClass]="{ isLiked: isLiked }"
+  ></i>
+  <span> {{ client.likes.length }}</span>
 </span>
+
