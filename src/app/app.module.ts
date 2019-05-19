@@ -33,6 +33,7 @@ import { ClientHasBalancePipe } from "./components/clients/clients.pipe";
 import { onlyAdamPipe } from "./components/clients/clients.pipe";
 import { FooterComponent } from './components/footer/footer.component';
 import { LikeComponent } from './components/like/like.component';
+import { TitleCasePipe } from './pipes/title-case.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { LikeComponent } from './components/like/like.component';
     ClientHasBalancePipe,
     onlyAdamPipe,
     FooterComponent,
-    LikeComponent
+    LikeComponent,
+    TitleCasePipe
   ],
   imports: [
     BrowserModule,
