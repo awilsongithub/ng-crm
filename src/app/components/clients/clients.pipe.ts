@@ -29,3 +29,12 @@ export class onlyAdamPipe implements PipeTransform {
     }
   }
 }
+
+
+/**
+ * star full or empty on click
+ * class based on property
+ * click > prop = !prop
+ * 
+ * 
+ */
