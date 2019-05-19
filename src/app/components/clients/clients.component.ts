@@ -12,20 +12,27 @@ export class ClientsComponent implements OnInit {
   clients: Client[];
   totalOwed: number;
   minBalance: number = 0;
+  onlyAdam: boolean = false;
 
   constructor(private clientService: ClientService) {}
 
   ngOnInit() {
-    this.clientService.getClients().subscribe(clients => {
+    this.clientService.getClients().subscribe((clients) => {
       this.clients = clients;
       this.getTotalOwed();
     });
   }
 
-  getTotalOwed() {
-    this.totalOwed = this.clients.reduce( (total:number, client:Client) => {   
-        return total + client.balance;
-    }, 0);
+  // on checkbox change, toggle boolean 
+  // pipe (filter) only filters if boolean is true 
+  onlyAdamPipeToggle(event) {
+      this.onlyAdam = event.target.checked;
+      console.log(this.onlyAdam)
   }
 
+  getTotalOwed() {
+    this.totalOwed = this.clients.reduce((total: number, client: Client) => {
+      return total + client.balance;
+    }, 0);
+  }
 }

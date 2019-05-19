@@ -30,6 +30,7 @@ import { RegisterComponent } from "./components/register/register.component";
 import { SettingsComponent } from "./components/settings/settings.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { ClientHasBalancePipe } from "./components/clients/clients.pipe";
+import { onlyAdamPipe } from "./components/clients/clients.pipe";
 import { FooterComponent } from './components/footer/footer.component';
 import { LikeComponent } from './components/like/like.component';
 
@@ -48,6 +49,7 @@ import { LikeComponent } from './components/like/like.component';
     SettingsComponent,
     NotFoundComponent,
     ClientHasBalancePipe,
+    onlyAdamPipe,
     FooterComponent,
     LikeComponent
   ],

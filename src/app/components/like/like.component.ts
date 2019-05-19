@@ -19,12 +19,12 @@ export class LikeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-          console.log(this.client);
+    this.setLikeStatus();
+  }
 
+  private setLikeStatus() {
     this.authService.getCurrentUser().subscribe((res) => {
-      console.log("uid if authd or null", res.uid);
-
-      // if currentuser check if uid in client.likes
+      console.log("current user:", res.uid);
       if (res && res.uid) {
         this.currUser = res.uid;
         if (this.client.likes.includes(this.currUser)) {

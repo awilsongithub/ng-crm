@@ -43,20 +43,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 
-=======================
-on add client
-  add fans empty []
-
-in like.component
-  if current user in fans
-    isLIked = T
-    click > 
-        isliked = F
-        likesCount--
-   
-  if user ! in fans
-    isLIked = F
-    click > 
-      likes++
-      isLIked = T
-

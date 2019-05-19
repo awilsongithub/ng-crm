@@ -2,7 +2,6 @@
 
 <div class="d-flex justify-content-between">
     <h2>
-      <!-- <i class="fa fa-users"></i> -->
       Clients
     </h2>
 
@@ -15,6 +14,7 @@
 <div class="form-inline d-flex justify-content-start mb-2">
   <label for="minBalance">With balance of at least: $ &nbsp;</label>
   <input type="text" name="minBalance" class="form-control w-25" [(ngModel)]="minBalance" />
+  <input type="checkbox" (change)="onlyAdamPipeToggle($event)"> &nbsp; Named Adam
 </div>
 
 <!-- ng template -->
@@ -28,7 +28,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let client of clients | hasBalance: minBalance">
+    <tr *ngFor="let client of clients | hasBalance: minBalance | onlyAdam: onlyAdam">
       <td>{{ client.firstName }} {{ client.lastName }}</td>
       <td class="d-none d-md-table-cell">{{ client.email }}</td>
       <td>{{ client.balance | currency: "USD":"symbol" }}</td>
