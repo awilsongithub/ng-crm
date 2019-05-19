@@ -12,6 +12,7 @@ export class ClientsComponent implements OnInit {
   clients: Client[];
   totalOwed: number;
   minBalance: number = 0;
+  highBalance: number = 1000;
   onlyAdam: boolean = false;
 
   constructor(private clientService: ClientService) {}
@@ -34,5 +35,14 @@ export class ClientsComponent implements OnInit {
     this.totalOwed = this.clients.reduce((total: number, client: Client) => {
       return total + client.balance;
     }, 0);
+  }
+
+  checkBalance(balance) {
+      console.log(balance)
+      if(balance > this.highBalance){
+          return true;
+      } else {
+          return false;
+      }
   }
 }

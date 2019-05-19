@@ -1,20 +1,23 @@
-
-
 <div class="d-flex justify-content-between">
-    <h2>
-      Clients
-    </h2>
+  <h2>
+    Clients
+  </h2>
 
-    <h5 class="text-secondary align-middle pt-2">
-      Total Owed: {{ totalOwed | currency: "USD":"symbol" }}
-    </h5>
-
+  <h5 class="text-secondary align-middle pt-2">
+    Total Owed: {{ totalOwed | currency: "USD":"symbol" }}
+  </h5>
 </div>
 
 <div class="form-inline d-flex justify-content-start mb-2">
   <label for="minBalance">With balance of at least: $ &nbsp;</label>
-  <input type="text" name="minBalance" class="form-control w-25" [(ngModel)]="minBalance" />
-  <input type="checkbox" (change)="onlyAdamPipeToggle($event)"> &nbsp; Named Adam
+  <input
+    type="text"
+    name="minBalance"
+    class="form-control w-25"
+    [(ngModel)]="minBalance"
+  />
+  <input type="checkbox" (change)="onlyAdamPipeToggle($event)" /> &nbsp; Named
+  Adam
 </div>
 
 <!-- ng template -->
@@ -28,10 +31,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let client of clients | hasBalance: minBalance | onlyAdam: onlyAdam">
+    <tr
+      *ngFor="
+        let client of clients | hasBalance: minBalance | onlyAdam: onlyAdam
+      "
+    >
       <td>{{ client.firstName }} {{ client.lastName }}</td>
       <td class="d-none d-md-table-cell">{{ client.email }}</td>
-      <td>{{ client.balance | currency: "USD":"symbol" }}</td>
+      <td [ngClass]="{ 'text-danger': checkBalance(client.balance) }">
+        {{ client.balance | currency: "USD":"symbol" }}
+      </td>
       <td>
         <a routerLink="client/{{ client.id }}" class="btn btn-secondar btn-sm">
           <i class="fa fa-arrow-circle-o-right"></i>

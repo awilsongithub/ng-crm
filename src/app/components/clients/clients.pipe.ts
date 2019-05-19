@@ -1,9 +1,13 @@
 import { Pipe, PipeTransform } from "@angular/core";
 import { Client } from "../../models/Client";
 
+/** 
+ * minBalance inits at 0
+ * user can change it 
+ */
 @Pipe({ name: "hasBalance" })
 export class ClientHasBalancePipe implements PipeTransform {
-  transform(allClients: Client[], minBalance) {
+  transform(allClients: Client[], minBalance?: number) {
     if (!minBalance) {
       minBalance = 0;
     }
@@ -11,6 +15,10 @@ export class ClientHasBalancePipe implements PipeTransform {
   }
 }
 
+/**
+ * filters when activated is true
+ * true if user checks a box 
+ */
 @Pipe({ name: "onlyAdam" })
 export class onlyAdamPipe implements PipeTransform {
   transform(allClients: Client[], activated) {
